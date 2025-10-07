@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta & Title -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChainClear.project | Powering Ethical Supply Chains</title>
+    <!-- Google Fonts: Futuristic Style -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+    <!-- CSS Styles -->
+    <style>
+        :root {
+            --clr-blue: rgba(0, 123, 255, 0.7);
+            --clr-white: #fff;
+            --clr-glass: rgba(255,255,255,0.2);
+            --clr-dark: #0a192f;
+            --clr-accent: #00eaff;
+            --font-main: 'Orbitron', Arial, sans-serif;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            margin: 0;
+            font-family: var(--font-main);
+            background: linear-gradient(135deg, var(--clr-dark) 0%, var(--clr-blue) 100%);
+            color: var(--clr-white);
+        }
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 2rem 5vw;
+            background: var(--clr-glass);
+            backdrop-filter: blur(8px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        /* Logo Placeholder */
+        .logo {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--clr-blue), var(--clr-accent));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            box-shadow: 0 0 20px var(--clr-blue);
+            margin-right: 1rem;
+        }
+        .logo img {
+            width: 40px;
+            height: 40px;
+            opacity: 0.7;
+            /* Placeholder: Replace with SVG logo later */
+        }
+        nav a {
+            color: var(--clr-white);
+            text-decoration: none;
+            margin: 0 1rem;
+            font-weight: 700;
+            transition: color 0.2s;
+        }
+        nav a:hover {
+            color: var(--clr-accent);
+        }
+        /* Section Styles */
+        section {
+            padding: 4rem 5vw;
+            max-width: 1200px;
+            margin: auto;
+        }
+        .home {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 70vh;
+            text-align: center;
+        }
+        .home h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            letter-spacing: 2px;
+        }
+        .home .ticker {
+            font-size: 1.5rem;
+            color: var(--clr-accent);
+            margin-bottom: 1rem;
+        }
+        .home .tagline {
+            font-size: 1.3rem;
+            font-weight: 500;
+            margin-bottom: 2rem;
+            color: var(--clr-white);
+            opacity: 0.85;
+        }
+        /* About Section */
+        .about h2 { font-size: 2rem; margin-bottom: 1rem; }
+        .about p { font-size: 1.1rem; line-height: 1.7; }
+        /* Problem & Solution */
+        .problem, .solution {
+            background: var(--clr-glass);
+            border-radius: 18px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+            margin-bottom: 2rem;
+        }
+        .problem h2, .solution h2 { font-size: 1.7rem; }
+        .problem ul, .solution ul {
+            margin: 1rem 0 0 1.5rem;
+            font-size: 1.1rem;
+        }
+        /* Features Section */
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+        .feature-card {
+            background: var(--clr-glass);
+            border-radius: 16px;
+            padding: 2rem 1.5rem;
+            width: 220px;
+            text-align: center;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.09);
+            transition: transform 0.2s, box-shadow 0.2s;
+            cursor: pointer;
+        }
+        .feature-card:hover {
+            transform: translateY(-8px) scale(1.04);
+            box-shadow: 0 8px 32px var(--clr-blue);
+        }
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--clr-accent);
+            filter: drop-shadow(0 0 8px var(--clr-blue));
+        }
+        /* Comparison Table */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--clr-glass);
+            border-radius: 16px;
+            overflow: hidden;
+            margin-bottom: 2rem;
+        }
+        .comparison-table th, .comparison-table td {
+            padding: 1rem;
+            text-align: center;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+        .comparison-table th {
+            background: var(--clr-blue);
+            color: var(--clr-white);
+            font-size: 1.1rem;
+        }
+        .comparison-table tr:last-child td {
+            border-bottom: none;
+        }
+        /* Contact Section */
+        .contact-links {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+        .contact-links a {
+            color: var(--clr-accent);
+            text-decoration: none;
+            font-weight: 700;
+            transition: color 0.2s;
+            font-size: 1.1rem;
+        }
+        .contact-links a:hover {
+            color: var(--clr-white);
+            text-shadow: 0 0 8px var(--clr-accent);
+        }
+        .whitepaper-btn {
+            background: var(--clr-accent);
+            color: var(--clr-dark);
+            border: none;
+            border-radius: 8px;
+            padding: 0.8rem 2rem;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 2px 12px var(--clr-blue);
+            transition: background 0.2s, color 0.2s;
+        }
+        .whitepaper-btn:hover {
+            background: var(--clr-blue);
+            color: var(--clr-white);
+        }
+        /* Responsive */
+        @media (max-width: 900px) {
+            .features { flex-direction: column; align-items: center; }
+            header { flex-direction: column; gap: 1rem; }
+        }
+        @media (max-width: 600px) {
+            section { padding: 2rem 3vw; }
+            .home h1 { font-size: 2rem; }
+            .feature-card { width: 90vw; }
+            .comparison-table th, .comparison-table td { padding: 0.7rem; font-size: 0.95rem; }
+        }
+    </style>
+    <!-- Simple JS for logo glass effect animation -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Simple glass shine animation for logo
+            const logo = document.querySelector('.logo');
+            if (logo) {
+                let shine = document.createElement('div');
+                shine.style.position = 'absolute';
+                shine.style.top = '0';
+                shine.style.left = '0';
+                shine.style.width = '100%';
+                shine.style.height = '100%';
+                shine.style.borderRadius = '50%';
+                shine.style.background = 'linear-gradient(120deg, rgba(255,255,255,0.3) 30%, rgba(255,255,255,0.05) 70%)';
+                shine.style.pointerEvents = 'none';
+                shine.style.transition = 'opacity 0.6s';
+                logo.appendChild(shine);
+                logo.addEventListener('mouseenter', () => { shine.style.opacity = '1'; });
+                logo.addEventListener('mouseleave', () => { shine.style.opacity = '0.5'; });
+            }
+        });
+    </script>
+</head>
+<body>
+    <!-- ================= HEADER & NAVIGATION ================= -->
+    <header>
+        <!-- Logo Placeholder (replace with SVG later) -->
+        <div class="logo">
+            <!-- Placeholder image: chain circle with glass effect -->
+            <img src="https://img.icons8.com/ios-filled/50/ffffff/chain.png" alt="ChainClear Logo">
+        </div>
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#problem">Problem</a>
+            <a href="#solution">Solution</a>
+            <a href="#features">Features</a>
+            <a href="#comparison">Comparison</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <!-- ================= HOME SECTION ================= -->
+    <section class="home" id="home">
+        <!-- Nama Proyek, Ticker, Tagline -->
+        <h1>ChainClear.project</h1>
+        <div class="ticker">Coin Ticker: <strong>CLR</strong></div>
+        <div class="tagline">Powering Ethical Supply Chains.</div>
+    </section>
+
+    <!-- ================= ABOUT SECTION ================= -->
+    <section class="about" id="about">
+        <!-- Visi & Misi -->
+        <h2>About ChainClear (CLR)</h2>
+        <p>
+            <strong>Vision:</strong> To build a world where every supply chain is transparent, ethical, and trusted.<br>
+            <strong>Mission:</strong> Leveraging blockchain technology to empower businesses and consumers with verifiable, tamper-proof supply chain data, fostering accountability and sustainability.
+        </p>
+    </section>
+
+    <!-- ================= PROBLEM SECTION ================= -->
+    <section class="problem" id="problem">
+        <!-- Masalah utama -->
+        <h2>Problem: Supply Chain Opacity & Inefficiency</h2>
+        <ul>
+            <li>Lack of transparency leads to unethical practices and counterfeiting.</li>
+            <li>Manual tracking causes delays and errors.</li>
+            <li>Consumers cannot verify product origins or sustainability.</li>
+        </ul>
+    </section>
+
+    <!-- ================= SOLUTION SECTION ================= -->
+    <section class="solution" id="solution">
+        <!-- Solusi blockchain -->
+        <h2>Solution: Blockchain-Powered Transparency</h2>
+        <ul>
+            <li><strong>Immutable Provenance:</strong> Every transaction is recorded and cannot be altered.</li>
+            <li><strong>Trust:</strong> Decentralized verification builds trust among all stakeholders.</li>
+            <li><strong>Smart Contracts:</strong> Automate compliance and payments.</li>
+            <li><strong>Consumer Empowerment:</strong> Easy access to product history and certifications.</li>
+        </ul>
+    </section>
+
+    <!-- ================= FEATURES SECTION ================= -->
+    <section id="features">
+        <!-- Fitur utama dengan ikon -->
+        <h2 style="text-align:center; margin-bottom:2rem;">Key Features</h2>
+        <div class="features">
+            <!-- Feature: Transparency -->
+            <div class="feature-card">
+                <div class="feature-icon">🔍</div>
+                <div><strong>Transparency</strong></div>
+                <div style="font-size:0.98rem; margin-top:0.5rem;">Real-time, tamper-proof supply chain data.</div>
+            </div>
+            <!-- Feature: Anti-Counterfeit -->
+            <div class="feature-card">
+                <div class="feature-icon">🛡️</div>
+                <div><strong>Anti-Counterfeit</strong></div>
+                <div style="font-size:0.98rem; margin-top:0.5rem;">Verify product authenticity at every stage.</div>
+            </div>
+            <!-- Feature: Sustainability -->
+            <div class="feature-card">
+                <div class="feature-icon">🌱</div>
+                <div><strong>Sustainability</strong></div>
+                <div style="font-size:0.98rem; margin-top:0.5rem;">Track eco-friendly practices and certifications.</div>
+            </div>
+            <!-- Feature: Efficiency -->
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <div><strong>Efficiency</strong></div>
+                <div style="font-size:0.98rem; margin-top:0.5rem;">Automated processes reduce costs and errors.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= COMPARISON SECTION ================= -->
+    <section id="comparison">
+        <!-- Tabel perbandingan CLR vs VET -->
+        <h2 style="text-align:center; margin-bottom:2rem;">ChainClear (CLR) vs VeChain (VET)</h2>
+        <table class="comparison-table">
+            <thead>
+                <tr>
+                    <th>Feature</th>
+                    <th>ChainClear (CLR)</th>
+                    <th>VeChain (VET)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Focus</td>
+                    <td>Ethical & Transparent Supply Chains</td>
+                    <td>General Supply Chain Management</td>
+                </tr>
+                <tr>
+                    <td>Consumer Empowerment</td>
+                    <td>Direct access to product history</td>
+                    <td>Limited consumer tools</td>
+                </tr>
+                <tr>
+                    <td>Smart Contract Automation</td>
+                    <td>Advanced, customizable</td>
+                    <td>Standard</td>
+                </tr>
+                <tr>
+                    <td>Sustainability Tracking</td>
+                    <td>Integrated eco-certification</td>
+                    <td>Optional</td>
+                </tr>
+                <tr>
+                    <td>Transparency Level</td>
+                    <td>Full, end-to-end</td>
+                    <td>Partial</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- ================= CONTACT SECTION ================= -->
+    <section id="contact">
+        <!-- Email, Sosial Media, Whitepaper -->
+        <h2 style="text-align:center; margin-bottom:2rem;">Contact & Resources</h2>
+        <div class="contact-links">
+            <!-- Email -->
+            <a href="mailto:chainclear.project@gmail.com" target="_blank">📧 chainclear.project@gmail.com</a>
+            <!-- Social Media (replace # with actual links) -->
+            <a href="https://twitter.com/" target="_blank">🐦 Twitter</a>
+            <a href="https://t.me/" target="_blank">💬 Telegram</a>
+            <a href="https://linkedin.com/" target="_blank">🔗 LinkedIn</a>
+        </div>
+        <!-- Download Whitepaper Button -->
+        <a href="whitepaper.pdf" class="whitepaper-btn" download>Download Whitepaper (PDF)</a>
+    </section>
+
+    <!-- ================= FOOTER ================= -->
+    <footer style="text-align:center; padding:2rem 0; color:#aaa; font-size:0.95rem;">
+        <!-- Footer komentar: ubah copyright sesuai kebutuhan -->
+        &copy; 2024 ChainClear.project. All rights reserved.
+    </footer>
+</body>
+</html>
